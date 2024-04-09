@@ -255,7 +255,7 @@ D.<image>[UNUSED_TOKEN_145]
   D[UNUSED_TOKEN_145]</s>
 show 5 text sections
 ```
-
+通过观察日志发现，猜测大模型会先从远程下载一些图片，然后再作为参考样本喂给SD来进行作图，具体过程还需实战训练营课程完成后，再来看源码验证。
 
 
 
