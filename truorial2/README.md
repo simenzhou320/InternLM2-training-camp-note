@@ -168,4 +168,52 @@ streamlit run /root/demo/lagent/examples/internlm2_agent_web_demo_hf.py --server
 关闭网页，并在web ide 中ctrl+c 退出demo
 
 # 实战：实践部署 浦语·灵笔2 模型（开启 50% A100 权限后才可开启此章节）
+和前一个demo一样，需要调整配置，在开发机关机的情况下，调整算力为50%。
+进入开发机，启动 conda 环境：
 
+```shall
+conda activate demo
+# 补充环境包
+pip install timm==0.4.12 sentencepiece==0.1.99 markdown2==2.4.10 xlsxwriter==3.1.2 gradio==4.13.0 modelscope==1.9.5
+```
+下载 InternLM-XComposer 仓库 相关的代码资源：
+```shall
+cd /root/demo
+git clone https://gitee.com/internlm/InternLM-XComposer.git
+# git clone https://github.com/internlm/InternLM-XComposer.git
+cd /root/demo/InternLM-XComposer
+git checkout f31220eddca2cf6246ee2ddf8e375a40457ff626
+```
+在 terminal 中输入指令，构造软链接快捷访问方式：
+```shall
+ln -s /root/share/new_models/Shanghai_AI_Laboratory/internlm-xcomposer2-7b /root/models/internlm-xcomposer2-7b
+ln -s /root/share/new_models/Shanghai_AI_Laboratory/internlm-xcomposer2-vl-7b /root/models/internlm-xcomposer2-vl-7b
+```
+
+
+
+
+
+
+
+
+
+
+
+# Homework
+熟悉 huggingface 下载功能，使用 huggingface_hub python 包，下载 InternLM2-Chat-7B 的 config.json 文件到本地
+```python
+# 使用 huggingface_hub 下载 InternLM2-Chat-7B 的 config.json 文件到本地
+from huggingface_hub import hf_hub_download
+
+# 指定模型和文件的名称
+model_id = "internlm/internlm2-chat-7b"
+filename = "config.json"
+
+# 使用 hf_hub_download 函数下载文件
+local_path = hf_hub_download(repo_id=model_id, filename=filename, local_dir='./')
+
+print(f"文件已下载到：{local_path}")
+```
+结果如图：
+![huggingface_hub_download](images/tutorial2_homework_1.png)
