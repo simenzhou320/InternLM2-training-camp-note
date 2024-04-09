@@ -257,9 +257,24 @@ show 5 text sections
 ```
 通过观察日志发现，猜测大模型会先从远程下载一些图片，然后再作为参考样本喂给SD来进行作图，具体过程还需实战训练营课程完成后，再来看源码验证。
 
+# 图片理解实战（开启 50% A100 权限后才可开启此章节）
+关闭并重新启动一个新的 terminal，继续输入指令，启动 InternLM-XComposer2-vl：
+```shall
+conda activate demo
 
-
-
+cd /root/demo/InternLM-XComposer
+python /root/demo/InternLM-XComposer/examples/gradio_demo_chat.py  \
+--code_path /root/models/internlm-xcomposer2-vl-7b \
+--private \
+--num_gpus 1 \
+--port 6006
+```
+打开 http://127.0.0.1:6006 (上传图片后) 键入内容示例如下：
+```text
+请分析一下图中内容
+```
+实践效果如下图所示：
+![图片理解实战](images/tutorial2_10.png)
 
 
 
