@@ -161,7 +161,7 @@ streamlit run /root/demo/lagent/examples/internlm2_agent_web_demo_hf.py --server
 ```
 打开 http://127.0.0.1:6006 后，（会有较长的加载时间）勾上数据分析，其他的选项不要选择，进行计算方面的 Demo 对话，即完成本章节实战。键入内容示例：
 ```text
-请解方程 2*X=1360 之中 X 的结果
+请解方程 2*X=1370 之中 X 的结果
 ```
 执行结果如下：
 ![Lagent 运行 InternLM2-Chat-7B 模型为内核的智能体](images/tutorial2_4.png)
