@@ -166,5 +166,3 @@ python3 -m huixiangdou.main --standalone
 ![image.png](images/tuorial3_2.png)
 ![image.png](images/tuorial3_3.png)
 ![image.png](images/tuorial3_4.png)
-
-## 茴香豆进阶
