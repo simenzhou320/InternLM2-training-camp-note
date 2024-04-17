@@ -101,11 +101,14 @@ lmdeploy serve api_server /root/internlm2-chat-1_8b \
     --server-name 0.0.0.0 \
     --server-port 23333 \
     --tp 1 \
-    --backend pytorch \
+    --backend pytorch \ #必须使用pytorch的方式来启动
     --adapters yykx=/root/models/yykx hdnj=/root/models/hdnj
 ```
+![image](images/tuorial5_8.png)
+报错，提示Lora配置文件中有无法识别的参数 layer_replication，进入Lora文件夹后，在adapter_config.json中删除相应的参数后，再次启动
+
 ![image](images/tuorial5_6.png)
-启动成功！
+adapters 验证成功，但是由于是pytorch的方式启动，爆显存了，关机升级配置
 
 ## 本地部署，使用streamlit web ui 方式测试
 ```python
