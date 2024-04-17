@@ -15,21 +15,23 @@ def pdf_to_jsonl(pdf_path, jsonl_path):
             text = page.extract_text()
             if text:
                 # Remove newlines and spaces
-                text = re.sub(r'\s+|徐文兵：|梁冬：', '', text)
+                text = re.sub(r'\s+', '', text)
                 
                 if len(text) == 0:
                     continue
 
-                # Split text by Chinese period
-                sentences = re.split(r'。', text)
+                data.append({"conversation": [{"system": "","input": "", "output": text}]})
+
+                # # Split text by Chinese period
+                # sentences = re.split(r'。', text)
                 
-                # Limit the length of each sentence to 50 characters
-                sentences = [s[:50] for s in sentences]
+                # # Limit the length of each sentence to 50 characters
+                # sentences = [s[:50] for s in sentences]
                 
-                for s in sentences:
-                    if len(s) == 0:
-                        continue
-                    data.append({"conversation": [{"input": "", "output": s}]})
+                # for s in sentences:
+                #     if len(s) == 0:
+                #         continue
+                #     data.append({"conversation": [{"input": "", "output": s}]})
 
                 #data.append({"conversation": [{"system": "", "input": "", "output": s}] for s in sentences})
 

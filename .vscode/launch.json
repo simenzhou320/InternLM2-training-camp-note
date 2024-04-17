@@ -10,6 +10,16 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "debug streamlit",
+            "type": "python",
+            "request": "launch",
+            "module": "streamlit.web.cli",
+            "args": [
+                "run",
+                "${file}"
+            ]
         }
     ]
 }
