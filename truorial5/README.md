@@ -101,14 +101,16 @@ lmdeploy serve api_server /root/internlm2-chat-1_8b \
     --server-name 0.0.0.0 \
     --server-port 23333 \
     --tp 1 \
-    --backend pytorch \ #必须使用pytorch的方式来启动
+    --backend pytorch \ 
     --adapters yykx=/root/models/yykx hdnj=/root/models/hdnj
 ```
 ![image](images/tuorial5_8.png)
 报错，提示Lora配置文件中有无法识别的参数 layer_replication，进入Lora文件夹后，在adapter_config.json中删除相应的参数后，再次启动
 
 ![image](images/tuorial5_6.png)
-adapters 验证成功，但是由于是pytorch的方式启动，爆显存了，关机升级配置
+adapters 验证成功，但是由于是pytorch的方式启动，爆内存了，关机升级配置后依旧提示内存不够
+
+后换了vllm部署，并附加Lora后，得到清晰的提示：目前internlm模型不支持附加lora的功能。
 
 ## 本地部署，使用streamlit web ui 方式测试
 ```python
@@ -118,7 +120,7 @@ from openai import OpenAI
 with st.sidebar:
     model_name = st.sidebar.selectbox(
         '选择一个选项',
-        ('internlm2', 'yykx', 'hdnj')
+        ('internlm2', 'yykx', 'hdnj') #原来是用于切换Lora的，现在也没法用了，留作以后功能完善后再测试
     )
 
 st.title("💬 Chatbot")
@@ -156,7 +158,3 @@ streamlit run app.py
 ```
 ![image](images/tuorial5_7.png)
 原模型测试通过
-![image](images/tuorial5_8.png)
-切换Lora，通过左上角来选择要使用Lora
-## 总结
-```
